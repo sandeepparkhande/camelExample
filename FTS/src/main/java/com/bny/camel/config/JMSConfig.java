@@ -40,4 +40,14 @@ public class JMSConfig {
         return jmsComponent;
     }
     
+    @Bean
+    public JmsComponent mybatis() {
+    	ActiveMQConnectionFactory connectionFactory=new ActiveMQConnectionFactory();
+    	connectionFactory.setBrokerURL("tcp://localhost:61616");
+    	connectionFactory.setUserName("admin");
+    	connectionFactory.setPassword("admin");
+        JmsComponent jmsComponent = JmsComponent.jmsComponentTransacted(connectionFactory);
+        return jmsComponent;
+    }
+    
 }
